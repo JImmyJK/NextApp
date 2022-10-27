@@ -28,8 +28,11 @@ jobs:
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: Compress-Archive . release.zip * .env .next
-
+        uses: TheDoctor0/zip-release@0.6.2
+        with:
+          filename: release.zip
+          path: .     
+          
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -60,4 +63,4 @@ jobs:
           app-name: 'NextJsDemo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_31EF6A9EA3B6488697270E1FD616E1CE }}
-          package: .
+          package: release.zip
