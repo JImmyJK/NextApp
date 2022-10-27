@@ -53,7 +53,7 @@ jobs:
         with:
           name: node-app
 
-      - name: unzip artifact for deployment
+      - name: Unzip artifact for deployment
         run: unzip release.zip
 
       - name: 'Deploy to Azure Web App'
@@ -63,4 +63,4 @@ jobs:
           app-name: 'NextJsDemo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_31EF6A9EA3B6488697270E1FD616E1CE }}
-          package: release.zip
+          package: .
